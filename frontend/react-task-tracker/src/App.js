@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from './components/Header'
 
 const App = () => {
-    // const name = "Brand"
+     const name = "Brand"
 
 
     useEffect(()=>{
