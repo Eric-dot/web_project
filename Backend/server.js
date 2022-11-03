@@ -21,7 +21,8 @@ app.set("view engine", "ejs")
 app.use('/search', async (req, res) => {
     const apiRes = await axios({
         url: `https://api.yelp.com/v3/businesses/search`,
-        params: req.query,
+        params: req.params,
+
         headers: {
             Authorization: req.headers.Authorization,
         },
