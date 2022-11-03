@@ -1,30 +1,19 @@
-const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const express = require('express')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const axios = require('axios')
+const cors = require('cors')
 
-const app = express();
-app.all('*', function (req, res, next) {
-    // res.header('Access-Control-Allow-Origin','http://localhost:3000'); // 允许某个地址
-    res.header('Access-Control-Allow-Origin', '*') //当允许携带cookies此处的白名单不能写’*’
-    res.header(
-        'Access-Control-Allow-Headers',
-        'content-type,Content-Length, Authorization,Origin,Accept,X-Requested-With'
-    ) // 允许的请求头
-    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT') // 允许的请求方法
-    res.header('Access-Control-Allow-Credentials', true) // 允许携带cookies
-    next()
-})
+const app = express()
 
-app.set("view engine", "ejs")
+app.use(cors())
 
 app.use('/search', async (req, res) => {
     const apiRes = await axios({
         url: `https://api.yelp.com/v3/businesses/search`,
         params: req.params,
-
         headers: {
-            Authorization: req.headers.Authorization,
+            Authorization: req.header('Authorization'),
         },
     })
     res.json(apiRes.data)
