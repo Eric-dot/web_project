@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from './components/Header'
 
 const App = () => {
-     const name = "Brand"
+    // const name = "Brand"
 
 
     useEffect(()=>{
@@ -12,7 +12,9 @@ const App = () => {
                     method: 'get',
                     url: 'http://localhost:8080/search',
                     params:{
-                        quary:'dinner'
+                        term:'dinner',
+                        location:'San Francisco, CA',
+                        limit:3,
                     },
                     headers: {
                         Authorization: 'Bearer pvwAzDkoQqbsC8dzksa9R3ScsLuerrVw8b3RC0YuAVPJnasUdK3CLCgWyFEIH1wFS2iqW1Ykx3z1wFGaYGgHyxhiJ4dVvTrgg5Kqr-yl3ju7fpm3OrkdjefoGj9jY3Yx'
@@ -25,8 +27,9 @@ const App = () => {
         }
     )
     return (
-        <div>
-
+        <div className="container">
+            {/* <h2>{name}</h2> */}
+            <Header title='Hello'/>
         </div>
     );
 }
