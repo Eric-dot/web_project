@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
+import Form from './components/Form';
 
 
 const App = () => {
@@ -7,10 +8,10 @@ const App = () => {
         const axiosTask = async () => {
             const res = await axios({
                 method: 'get',
-                url: 'http://localhost:8080/search',
+                url: 'http://localhost:8081/search',
                 params: {
                     term:'dinner',
-                    location:'San Francisco, CA',
+                    location:'New York City',
                     limit:3,
                 },
                 headers: {
@@ -18,12 +19,13 @@ const App = () => {
                         'Bearer pvwAzDkoQqbsC8dzksa9R3ScsLuerrVw8b3RC0YuAVPJnasUdK3CLCgWyFEIH1wFS2iqW1Ykx3z1wFGaYGgHyxhiJ4dVvTrgg5Kqr-yl3ju7fpm3OrkdjefoGj9jY3Yx',
                 },
             })
-            console.log(res)
+            // console.log(res)
         }
         axiosTask()
     })
     return (
         <div>
+            <Form  />
         </div>
     );
 }
